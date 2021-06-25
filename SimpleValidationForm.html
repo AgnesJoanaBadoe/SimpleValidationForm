@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+        <!--I will be creating a contact form.
+        This contact form will include their full name,email,
+        phone number, date of birth etc....
+        The reason i chose this type of web form was because it is essential to have your client's 
+        details so as to send them relevant information.-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Contact Forms</title>
+
+        <style type="text/css">
+/* Primary selectors*/
+body{
+    background-color: #fff;
+    color: #000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: large;
+}
+
+table{
+    width: 500px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+td{
+    vertical-align: top;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+/* IDs and classes*/
+
+#fullpage{
+    margin: 100px;
+}
+
+.label_col{
+    text-align: right;
+}
+.input_col{
+    text-align: left;
+}
+
+.feedback_col{
+    text-align: center;
+    vertical-align: middle;
+    color: lightgray;
+    font-size: small;
+}
+
+.Button{
+    margin: auto;
+    text-align: center;
+    width: 50px;
+}
+
+.buttonBG{
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 5px;
+}
+        </style>
+
+        <script>
+//This function validates the first name
+function validateFirstName() { 
+        var fName = document.getElementById ("firstName").value;
+        var re1 = /^[a-zA-Z\s\'\-]{2,15}$/;
+                
+        if (re1.test(fName)) {//if input is valid,update page to show successful entry
+            document.getElementById ("firstNamePrompt").style.color = "green"; 
+            document.getElementById ("firstNamePrompt").innerHTML = "<strong>valid</strong>"
+    return true;
+    }
+        else { //if input is valid, update page to prompt for new input
+            document.getElementById ("firstNamePrompt").style.color = "Red";
+            document.getElementById ("firstNamePrompt").innerHTML = "<strong>Enter 2-15 letters</strong>"
+    return false;
+                }
+            }
+
+//This function validates the last name
+function validateLastName() { 
+        var lName = document.getElementById ("lastName").value;
+        var re1 = /^[a-zA-Z\s\'\-]{2,15}$/;
+        
+        if (re1.test(lName)) {//if input is valid,update page to show valid
+            document.getElementById ("lastNamePrompt").style.color = "green";
+            document.getElementById ("lastNamePrompt").innerHTML = "<strong>valid</strong>"
+    return true;
+    }
+        else { //if input is valid, update page to prompt for new input
+            document.getElementById ("lastNamePrompt").style.color = "Red";
+            document.getElementById ("lastNamePrompt").innerHTML = "<strong>Enter 2-15 letters</strong>"
+    return false;
+                }
+            }
+
+//This function validates the phone number
+function validatePhone() { 
+        var phoneNumber = document.getElementById("phone").value;
+        var re3 = /^\d{3}-\d{3}-\d{4}$/;
+
+    if (re3.test(phoneNumber)) { //if input is valid
+        document.getElementById("phonePrompt").style.color = "Green";
+        document.getElementById("phonePrompt").innerHTML = "<strong>valid</strong>";
+        return (true);
+    }
+    else{//if input is invalid
+        document.getElementById("phonePrompt").style.color = "Red";
+        document.getElementById("phonePrompt").innerHTML = "<strong>Use xxx-xxx-xxxx</strong>";
+        return (false);
+
+    }
+}
+     </script>
+
+    </head>
+
+    <body>
+
+            <form action="mysubmitpage.html" pnsubmit="return validate form();">
+                <div id="fullpage">
+                    <h2>Contact Form  <img src="contact form.jpeg" width="20" height="20"></h2> <!--This is the title of the form which includes an image.-->
+
+                    <table border="0"> <!--This table contains some of the details the user must input and this table has no borders.-->
+                        <tr>
+                            <td class="label_col">First Name</td> <!--This row allows the user inputs their first name-->
+                            <td class="input_col"><input name="firstName" id="firstName" type="text" placeholder="Enter First Name" onblur="validateFirstName();" > </td>
+                            <td class="feedback_col"><span id="firstNamePrompt"> &nbsp;</span> </td>
+                        </tr>
+                        <tr>
+                            <td class="label_col">Middle Name</td>
+                            <td class="input_col"><input name="middleName" id="middleName" type="text" placeholder="Enter Middle Name"></td> <!--This row allows the user inputs their Middle name-->
+                            <td class="feedback_col"><span id="middleNamePrompt"> &nbsp;</span> </td>
+                        </tr>
+                        <tr>
+                            <td class="label_col">Last Name</td>
+                            <td class="input_col"><input name="lastName" id="lastName" type="text" placeholder="Enter Last Name" onblur="validateLastName();"></td> <!--This row allows the user inputs their Last name-->
+                            <td class="feedback_col"><span id="lastNamePrompt"> &nbsp;</span> </td>
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            <td class="label_col">Phone Number:</td>
+                            <td class="input_col"><input name="phone" id="phone" type="text" placeholder="xxx-xxx-xxxx" onblur="validatePhone();"> </td> <!--This row allows the user input their phone -->
+                            <td class="feedback_col"><span id="phonePrompt"></span> </td>
+                        </tr>
+                        <tr>
+                            <td class="label_col">Email:</td>
+                            <td class="input_col"><input name="email" id="email" type="text" placeholder="noname@somemail.com" > </td> <!--This row allows the user input their email -->
+                            <td class="feedback_col"><span id="emailPrompt"></span> </td>
+                        </tr>
+
+                        <tr> <!--This row allows the user choose their gender -->
+                            <td><label for="gender">Choose your gender:</label></td>
+    
+                            <td><select name="gender" id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                              </select> <br></td>
+                        </tr>
+
+                        <tr> <!--This row allows the user select their date of birth -->
+                        <td><label for="dateofbirth">Date of Birth:</label></td>
+                        <td><input type="date" id="dateofbirth" name="dateofbirth"> <br> </td>
+                        </tr>
+                        
+                        <tr>
+                        <td><label for="religion">Choose your Religion:</label></td>
+        
+                            <td>
+                                <input type="radio" id="christianity" name="religion" value="christianity"></input>
+                                <label for="christianity">Christianity</label><br>
+                            
+                           
+                                <input type="radio" id="islamic" name="religion" value="islamic"></input>
+                                <label for="islamic" Text>Islamic</label><br>
+                            
+                            
+                                <input type="radio" id="other" name="religion" value="other"></input>
+                                <label for="other">Other</label><br> 
+                            </td>
+                       
+                        </tr>
+    
+                    </table>
+                   
+                </div>
+            
+                <button type="save" value="save" style="color:black;text-align:center;"><strong>Save Here</strong></button>
+            </form>
+    
+                </div>
+
+                
+            </form>
+    </body>
+
+</html>
